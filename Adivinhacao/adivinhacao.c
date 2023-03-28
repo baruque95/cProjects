@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdbool.h>
 
 int main()
 {
@@ -11,20 +10,23 @@ int main()
 	int numerosecreto = 42;
 	int chute;
 	int pontuacao = 1000;
-	bool adivinhou = false;
+	int adivinhou = 0;
+	int tentativa = 1;
 
 	// Tentativas até zerar a pontuação do jogo.
 
-	while (adivinhou == false)
+	while (adivinhou == 0)
 	{
-		printf("Digite um numero: ");
+		printf("Tentativa %d: Digite um numero: ", tentativa);
 		scanf("%d", &chute);
 
 		if (chute == numerosecreto)
 		{
 			printf("O numero %d eh o número secreto! Parabéns!\n", chute);
-			printf("Você fez %d pontos", pontuacao);
-			adivinhou = true;
+			printf("Você fez %d pontos e acertou na %da tentativa.", pontuacao, tentativa);
+			adivinhou = 1;
+			printf("%d", tentativa);
+
 			printf("Aperte qualquer botao para encerrar");
 			getchar();
 		}
@@ -34,11 +36,13 @@ int main()
 			{
 				printf("O numero %d eh maior que o numero secreto... Tente novamente:\n", chute);
 				pontuacao -= 100;
+				tentativa++;
 			}
 			else
 			{
 				printf("O numero %d eh menor que o numero secreto... Tente novamente:\n", chute);
 				pontuacao -= 100;
+				tentativa++;
 			}
 		}
 
