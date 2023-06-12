@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <time.h>
+#include <string.h>
+#include <stdlib.h>
 
 int main()
 {
@@ -7,7 +10,9 @@ int main()
 	printf("* Bem-vindo ao jogo da adivinhacao *\n");
 	printf("************************************\n");
 
-	int numerosecreto = 42; // Numero secreto ainda nao randomizado
+	int segundos = time(0);
+	srand(segundos);
+	int numerosecreto = rand() % 100; // Numero secreto ainda nao randomizado
 	int chute;
 	int pontuacao = 1000;
 	int adivinhou = 0;
